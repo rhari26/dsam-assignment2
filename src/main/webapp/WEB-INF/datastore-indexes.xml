@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datastore-indexes
+  autoGenerate="true">
+    <datastore-index kind="Voters" ancestor="false">
+        <property name="email" direction="asc" />
+        <property name="token" direction="asc" />
+        <property name="candidate" direction="asc" />
+        <property name="voted" direction="asc" />
+    </datastore-index>
+</datastore-indexes>

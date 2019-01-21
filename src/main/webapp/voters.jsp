@@ -10,7 +10,7 @@
 <body>
 <form action="/voters" method="post" id="voter-form">
 	<div id="email-text">
-		<input type="text" name="email[]" id="email" placeholder="Voter's Email"><br>
+		<input type="text" name="email" id="email" placeholder="Voter's Email"><br>
 	</div>
 	<a href="javascript:void(0)" id="add-email">Add</a>
 	<input type="submit" value="Submit" name="submit">
@@ -18,7 +18,7 @@
 </body>
 <script type="text/javascript">
 	$(document).on("click", "#add-email", function(){
-		var element = '<div><input type="text" name="email[]" id="email" placeholder="Voters Email"><span id="remove-email" style="cursor: pointer">remove</span><br></div>';
+		var element = '<div><input type="text" name="email" id="email" placeholder="Voters Email"><span id="remove-email" style="cursor: pointer">remove</span><br></div>';
 		$('#email-text').append(element);
 	});
 	
