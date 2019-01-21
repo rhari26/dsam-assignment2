@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.example.appengine.java8.ElectionSummary" %>
+<%@ page import="com.google.appengine.api.datastore.Entity" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +19,26 @@
 	<a href="javascript:void(0)" id="add-email">Add</a>
 	<input type="submit" value="Submit" name="submit">
 </form>
+<h3>Voter's List</h3>
+<table style="width:100%">
+  <tr>
+    <th>Voter's Email</th>
+    <th>Email Sent</th> 
+    <th>Voted</th>
+  </tr>
+  <% 
+  ElectionSummary es = new ElectionSummary();
+  List<Entity> votersList = es.votersList(); %>
+  <% if(votersList.isEmpty()){ %>
+  <% } else { %>
+  	<% for(Entity voter : votersList){ %>
+  	<tr>
+    <td><%= voter.getProperty("email").toString().trim() %></td>
+    <td>Not sent</td> 
+    <td><%= voter.getProperty("voted").toString() == "true" ? "Voted" : "Not voted" %></td>
+  </tr>
+  <% } } %>
+</table>
 </body>
 <script type="text/javascript">
 	$(document).on("click", "#add-email", function(){

@@ -13,7 +13,6 @@
     <servlet-name>VotersServlet</servlet-name>
     <url-pattern>/voters</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminServlet</servlet-name>
     <servlet-class>com.example.appengine.servlets.AdminServlet</servlet-class>

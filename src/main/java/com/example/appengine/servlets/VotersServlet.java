@@ -2,6 +2,7 @@ package com.example.appengine.servlets;
 import com.example.appengine.java8.ElectionSummary;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -37,6 +38,9 @@ public class VotersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		ElectionSummary es = new ElectionSummary();
+		List<Entity> votersList = es.votersList();
+		request.setAttribute("votersList", votersList);
 		request.getRequestDispatcher("/voters.jsp").forward(request, response);
 	}
 

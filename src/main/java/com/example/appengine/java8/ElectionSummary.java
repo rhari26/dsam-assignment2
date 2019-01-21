@@ -53,5 +53,12 @@ public class ElectionSummary {
 		}
 
 	}
+	
+	public List<Entity> votersList(){
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query qry = new Query("Voters");
+		List<Entity> votersList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
+		return votersList;
+	}
 
 }
