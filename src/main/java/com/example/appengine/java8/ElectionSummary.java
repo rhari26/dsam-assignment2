@@ -60,5 +60,12 @@ public class ElectionSummary {
 		List<Entity> votersList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
 		return votersList;
 	}
+	
+	public List<Entity> candidateList(){
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query qry = new Query("Candidates");
+		List<Entity> candidateList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
+		return candidateList;
+	}
 
 }

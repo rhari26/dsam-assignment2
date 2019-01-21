@@ -38,9 +38,6 @@ public class VotersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ElectionSummary es = new ElectionSummary();
-		List<Entity> votersList = es.votersList();
-		request.setAttribute("votersList", votersList);
 		request.getRequestDispatcher("/voters.jsp").forward(request, response);
 	}
 

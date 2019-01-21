@@ -7,4 +7,10 @@
         <property name="candidate" direction="asc" />
         <property name="voted" direction="asc" />
     </datastore-index>
+    
+    <datastore-index kind="Candidates" ancestor="false">
+        <property name="name" direction="asc" />
+        <property name="surname" direction="asc" />
+        <property name="email" direction="asc" />
+    </datastore-index>
 </datastore-indexes>

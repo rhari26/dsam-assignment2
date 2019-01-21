@@ -7,7 +7,7 @@
 <title>Admin</title>
 </head>
 <body>
-<a href="" id="candidates">Manage Candidates</a>
+<a href="/candidate" id="candidates">Manage Candidates</a>
 <a href="/voters" id="voters">Manage Voters</a>
 </body>
 </html>
