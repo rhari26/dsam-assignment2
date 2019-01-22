@@ -15,7 +15,7 @@ bor {
 
 table {
 	border: 1px solid #000080;
-	width: 100%
+	width: 300%
 }
 th{
 	 background-color: #ff8000;
@@ -25,4 +25,17 @@ th{
 tr{
 	 background-color: #c0c0c0;
 	 border: 2px dotted #000080;
+}
+.button {
+  width: 105px;
+  height: 20px;
+  background-image: url('tiny.gif');
+  line-height: 20px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+  font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  <!--font-weight: bold;
+  -->text-transform: none;
+  border: 1px solid transparent;
 }

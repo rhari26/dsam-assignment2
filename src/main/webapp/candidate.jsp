@@ -11,6 +11,7 @@
 <title>Candidates</title>
 </head>
 <body>
+<h1 align="center"> Add Candidate</h1>
 <form action="/candidate" method="post" id="voter-form">
 	<div id="name-text">
 	<bor><label>FirstName</label>
@@ -22,17 +23,17 @@
 	</bor></div>
 	<div id="email-text">
 	<bor><label>E-Mail</label>
-		<input type="text" value="E=mail" name="email" id="email" placeholder="Candidate E-mail">
+		<input type="text" value="E-Mail" name="email" id="email" placeholder="Candidate E-mail">
 	</bor></div>
 	<div id="faculty-text">
 	<bor><label>Faculty</label>
 		<input type="text" name="faculty" id="faculty" placeholder="Faculty Name">
-	</bor></div>
-	<bor><input type="submit" value="Submit" name="submit"></bor>
+	</bor></div><br>
+	<input type="submit" value="Submit" name="submit" style="color:red;background-color: #FFFFC0;margin-left: 150px;">
 </form>
 
-<h3>Candidate's List</h3>
-<table style="width:100%">
+<h2 align="center">Candidate's List</h2>
+<table style="width:100%" align="center">
   <tr>
     <th>First Name</th>
     <th>Last Name</th> 
