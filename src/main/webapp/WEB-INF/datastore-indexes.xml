@@ -12,5 +12,6 @@
         <property name="name" direction="asc" />
         <property name="surname" direction="asc" />
         <property name="email" direction="asc" />
+        <property name="faculty" direction="asc" />
     </datastore-index>
 </datastore-indexes>

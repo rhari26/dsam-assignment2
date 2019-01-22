@@ -20,6 +20,9 @@
 	<div id="email-text">
 		<input type="text" name="email" id="email" placeholder="Candidate E-mail"><br>
 	</div>
+	<div id="faculty-text">
+		<input type="text" name="faculty" id="faculty" placeholder="Faculty Name"><br>
+	</div>
 	<input type="submit" value="Submit" name="submit">
 </form>
 

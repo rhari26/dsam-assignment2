@@ -42,6 +42,7 @@ public class CandidateServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
 		String email = request.getParameter("email");
+		String faculty = request.getParameter("faculty");
 		
 		try {
 			DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -50,6 +51,7 @@ public class CandidateServlet extends HttpServlet {
 			candidate.setProperty("name", name);
 			candidate.setProperty("surname", surname);
 			candidate.setProperty("email", email);
+			candidate.setProperty("faculty", faculty);
 			
 			ds.put(candidate);
 		}
