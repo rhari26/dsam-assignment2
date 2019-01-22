@@ -13,7 +13,6 @@
     <servlet-name>VotersServlet</servlet-name>
     <url-pattern>/voters</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminServlet</servlet-name>
     <servlet-class>com.example.appengine.servlets.AdminServlet</servlet-class>
@@ -22,13 +21,29 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/admin</url-pattern>
   </servlet-mapping>
-  
- <servlet>
+  <servlet>
     <servlet-name>CandidateServlet</servlet-name>
     <servlet-class>com.example.appengine.servlets.CandidateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CandidateServlet</servlet-name>
     <url-pattern>/candidate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EmailServlet</servlet-name>
+    <servlet-class>com.example.appengine.servlets.EmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailServlet</servlet-name>
+    <url-pattern>/email</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ElectionTimeServlet</servlet-name>
+    <servlet-class>com.example.appengine.servlets.ElectionTimeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElectionTimeServlet</servlet-name>
+    <url-pattern>/election-time</url-pattern>
   </servlet-mapping>
 </web-app>
