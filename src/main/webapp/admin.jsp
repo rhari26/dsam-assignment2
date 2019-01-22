@@ -9,5 +9,6 @@
 <body>
 <a href="/candidate" id="candidates">Manage Candidates</a>
 <a href="/voters" id="voters">Manage Voters</a>
+<a href="/election-time" id="voters">Manage Election DateTime</a>
 </body>
 </html>
