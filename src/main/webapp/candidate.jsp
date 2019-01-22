@@ -5,6 +5,7 @@
 <%@ page import="com.google.appengine.api.datastore.Entity" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="Style.css"/>
 <head>
 <meta charset="ISO-8859-1">
 <title>Candidates</title>
@@ -12,18 +13,22 @@
 <body>
 <form action="/candidate" method="post" id="voter-form">
 	<div id="name-text">
-		<input type="text" name="name" id="name" placeholder="Candidate First Name"><br>
-	</div>
+	<bor><label>FirstName</label>
+		<input type="text" value="FirstName" name="name" id="name" placeholder="Candidate First Name">
+	</bor></div>
 	<div id="surname-text">
-		<input type="text" name="surname" id="surname" placeholder="Candidate Last Name"><br>
-	</div>
+	<bor><label>LastName</label>
+		<input type="text" value="LastName" name="surname" id="surname" placeholder="Candidate Last Name">
+	</bor></div>
 	<div id="email-text">
-		<input type="text" name="email" id="email" placeholder="Candidate E-mail"><br>
-	</div>
+	<bor><label>E-Mail</label>
+		<input type="text" value="E=mail" name="email" id="email" placeholder="Candidate E-mail">
+	</bor></div>
 	<div id="faculty-text">
-		<input type="text" name="faculty" id="faculty" placeholder="Faculty Name"><br>
-	</div>
-	<input type="submit" value="Submit" name="submit">
+	<bor><label>Faculty</label>
+		<input type="text" name="faculty" id="faculty" placeholder="Faculty Name">
+	</bor></div>
+	<bor><input type="submit" value="Submit" name="submit"></bor>
 </form>
 
 <h3>Candidate's List</h3>
