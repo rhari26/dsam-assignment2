@@ -12,7 +12,7 @@ import com.example.appengine.java8.ElectionSummary;
 /**
  * Servlet implementation class EmailServlet
  */
-@WebServlet("/EmailServlet")
+//@WebServlet("/EmailServlet")
 public class EmailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
