@@ -25,31 +25,28 @@ public class ElectionSummary {
 		
 	}
 	
-	public void sendEmailVoters() {
+	public void sendEmailVoters(String toEmail) {
 		
 		String host = "localhost";
 		String from = "rhari26@gmail.com";
 		
-		Properties props = System.getProperties();
-		props.setProperty("mail.smtp.host", host);
-		Session session = Session.getDefaultInstance(props, null);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query qry = new Query("Voters");
 		List<Entity> votersList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
 		
+		Properties props = new Properties();
+		Session session = Session.getDefaultInstance(props, null);
+
 		try {
-			for(Entity voter: votersList) {
-				String to = voter.getProperty("email").toString();
-				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress(from));
-				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));			
-				message.setSubject("This is the Subject Line!");
-				message.setText("This is actual message");
-				Transport.send(message);
-			}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
+		  Message msg = new MimeMessage(session);
+		  msg.setFrom(new InternetAddress("rhari26@gmail.com", "Example.com Admin"));
+		  msg.addRecipient(Message.RecipientType.TO,
+		                   new InternetAddress(toEmail, "Mr. User"));
+		  msg.setSubject("Your Example.com account has been activated");
+		  msg.setText("This is a test");
+		  Transport.send(msg);
+		} catch (Exception e) {
+		  // ...
 		}
 
 	}

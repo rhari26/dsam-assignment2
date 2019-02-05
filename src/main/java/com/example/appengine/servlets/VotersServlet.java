@@ -2,6 +2,7 @@ package com.example.appengine.servlets;
 import com.example.appengine.java8.ElectionSummary;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -46,10 +47,10 @@ public class VotersServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String[] emails = request.getParameterValues("email");
-		ElectionSummary es = new ElectionSummary();
         //log.info("ssssssssssssssssss");
 		try {
+			String[] emails = request.getParameterValues("email");
+			ElectionSummary es = new ElectionSummary();
 			for(String email : emails) {
 				DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 				Entity voter = new Entity("Voters");
@@ -60,13 +61,14 @@ public class VotersServlet extends HttpServlet {
 				voter.setProperty("candidate", 0);
 				voter.setProperty("voted", false);
 				ds.put(voter);
-				//es.sendEmailVoters();
+				es.sendEmailVoters(email);
 			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		response.sendRedirect("http://localhost:8080/voters");
+//		reqURL = new URL(request.getRequestURL().toString());
+		response.sendRedirect(request.getRequestURL().toString());
 	}
 
 }

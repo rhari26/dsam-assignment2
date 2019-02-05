@@ -31,7 +31,7 @@ public class ElectionTimeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/elctionTime.jsp").forward(request, response);
+		request.getRequestDispatcher("/electionTime.jsp").forward(request, response);
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class ElectionTimeServlet extends HttpServlet {
 			// TODO: handle exception
 		}
 		
-		response.sendRedirect("http://localhost:8080/election-time ");
+		response.sendRedirect("http://localhost:8080/election-time");
 	}
 
 }
