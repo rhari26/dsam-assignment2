@@ -37,7 +37,6 @@
     <servlet-name>EmailServlet</servlet-name>
     <url-pattern>/email</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ElectionTimeServlet</servlet-name>
     <servlet-class>com.example.appengine.servlets.ElectionTimeServlet</servlet-class>
@@ -45,5 +44,13 @@
   <servlet-mapping>
     <servlet-name>ElectionTimeServlet</servlet-name>
     <url-pattern>/election-time</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CastVoteServlet</servlet-name>
+    <servlet-class>com.example.appengine.servlets.CastVoteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CastVoteServlet</servlet-name>
+    <url-pattern>/cast-vote</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -20,8 +20,6 @@
 	<input type="submit" value="Submit" name="submit">
 </form>
 <h3>Voter's List</h3>
-<% String url = (String)request.getRequestURL().toString(); %>
-<%= url %>
 <table style="width:100%">
   <tr>
     <th>Voter's Email</th>

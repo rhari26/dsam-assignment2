@@ -57,7 +57,7 @@ public class ElectionTimeServlet extends HttpServlet {
 			// TODO: handle exception
 		}
 		
-		response.sendRedirect("http://localhost:8080/election-time");
+		response.sendRedirect(request.getRequestURL().toString());
 	}
 
 }

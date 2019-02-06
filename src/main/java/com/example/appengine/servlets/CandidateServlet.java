@@ -59,7 +59,7 @@ public class CandidateServlet extends HttpServlet {
 			// TODO: handle exception
 		}
 		
-		response.sendRedirect("http://localhost:8080/candidate");
+		response.sendRedirect(request.getRequestURL().toString());
 	}
 
 }

@@ -30,18 +30,13 @@ public class ElectionSummary {
 		String host = "localhost";
 		String from = "rhari26@gmail.com";
 		
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query qry = new Query("Voters");
-		List<Entity> votersList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
-		
 		Properties props = new Properties();
 		Session session = Session.getDefaultInstance(props, null);
 
 		try {
 		  Message msg = new MimeMessage(session);
-		  msg.setFrom(new InternetAddress("rhari26@gmail.com", "Example.com Admin"));
-		  msg.addRecipient(Message.RecipientType.TO,
-		                   new InternetAddress(toEmail, "Mr. User"));
+		  msg.setFrom(new InternetAddress("rhari26@gmail.com"));
+		  msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, "Mr. User"));
 		  msg.setSubject("Your Example.com account has been activated");
 		  msg.setText("This is a test");
 		  Transport.send(msg);
@@ -63,6 +58,40 @@ public class ElectionSummary {
 		Query qry = new Query("Candidates");
 		List<Entity> candidateList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
 		return candidateList;
+	}
+	
+	public Entity getElectionTime() {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		
+		Query electionQuery = new Query("Elections");
+		Entity election = datastore.prepare(electionQuery).asList(FetchOptions.Builder.withDefaults()).get(0);
+		
+		return election;
+	}
+	
+	public void sendCronEmailVoters() {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query qry = new Query("Voters");
+		List<Entity> votersList = datastore.prepare(qry).asList(FetchOptions.Builder.withDefaults());
+		
+		Properties props = new Properties();
+		Session session = Session.getDefaultInstance(props, null);
+
+		try {
+		for(Entity voter : votersList){
+			if(voter.getProperty("voted").toString() == "true") {
+			  Message msg = new MimeMessage(session);
+			  msg.setFrom(new InternetAddress("rhari26@gmail.com"));
+			  msg.addRecipient(Message.RecipientType.TO, new InternetAddress(voter.getProperty("email").toString().trim(), "Mr. User"));
+			  msg.setSubject("Your Example.com account has been activated");
+			  msg.setText("This is a test");
+			  Transport.send(msg);
+			}
+		}
+		} catch (Exception e) {
+		  // ...
+		}
+
 	}
 
 }
