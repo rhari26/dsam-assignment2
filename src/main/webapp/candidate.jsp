@@ -44,11 +44,11 @@
   List<Entity> candidateList = es.candidateList(); %>
   <% if(candidateList.isEmpty()){ %>
   <% } else { %>
-  	<% for(Entity voter : candidateList){ %>
+  	<% for(Entity candidate : candidateList){ %>
   	<tr>
-    <td><%= voter.getProperty("name").toString().trim() %></td>
-    <td><%= voter.getProperty("surname").toString().trim() %></td> 
-    <td><%= voter.getProperty("email").toString().trim() %></td>
+    <td><%= candidate.getProperty("name").toString().trim() %></td>
+    <td><%= candidate.getProperty("surname").toString().trim() %></td> 
+    <td><%= candidate.getKey().toString().trim() %></td>
   </tr>
   <% } } %>
 </table>

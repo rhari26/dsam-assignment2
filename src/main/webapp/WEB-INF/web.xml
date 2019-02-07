@@ -26,7 +26,7 @@
     <servlet-class>com.example.appengine.servlets.CandidateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CandidateServlet</servlet-name>
+    <servlet-name>CandidateServlet</servlet-name> 
     <url-pattern>/candidate</url-pattern>
   </servlet-mapping>
   <servlet>

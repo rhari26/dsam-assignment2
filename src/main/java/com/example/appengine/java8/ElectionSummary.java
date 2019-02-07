@@ -69,6 +69,14 @@ public class ElectionSummary {
 		return election;
 	}
 	
+	public Entity getVoterData(String token) {
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query("Voters").setFilter(new FilterPredicate("token",FilterOperator.EQUAL, token));
+		Entity voter = ds.prepare(q).asList(FetchOptions.Builder.withDefaults()).get(0);
+		
+		return voter;
+	}
+	
 	public void sendCronEmailVoters() {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query qry = new Query("Voters");
