@@ -5,12 +5,14 @@
 <%@ page import="com.google.appengine.api.datastore.Entity" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="Style.css"/>
 <head>
 <meta charset="ISO-8859-1">
 <title>Election Time</title>
 </head>
-<body>
+<body align="center">
 <h2>Manage Election Time/Date</h2>
+<bor>
 <% ElectionSummary es = new ElectionSummary();
   List<Entity> electionTime = es.candidateList();
   if(electionTime.isEmpty()){
@@ -32,5 +34,6 @@
  	<p>Election Date: <%= election.getProperty("electionDate") %></p>
  	<p>Starting at: <%= election.getProperty("electionStartTime") %> till <%= election.getProperty("electionEndTime") %></p>
  <% } } %>
+ </bor>
 </body>
 </html>

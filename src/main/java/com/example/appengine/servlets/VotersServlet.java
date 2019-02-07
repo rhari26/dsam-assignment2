@@ -61,7 +61,7 @@ public class VotersServlet extends HttpServlet {
 				voter.setProperty("candidate", 0);
 				voter.setProperty("voted", false);
 				ds.put(voter);
-				es.sendEmailVoters(email);
+				es.sendEmailVoters(email, uniqueID);
 			}
 		}
 		catch(Exception e) {

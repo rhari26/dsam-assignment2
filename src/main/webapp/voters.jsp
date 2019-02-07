@@ -6,21 +6,22 @@
     
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="Style.css"/>
 <head>
 <meta charset="ISO-8859-1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Voters</title>
 </head>
-<body>
+<body align="center">
 <form action="/voters" method="post" id="voter-form">
 	<div id="email-text">
 		<input type="text" name="email" id="email" placeholder="Voter's Email"><br>
-	</div>
+	</div><br>
 	<a href="javascript:void(0)" id="add-email">Add</a>
 	<input type="submit" value="Submit" name="submit">
 </form>
 <h3>Voter's List</h3>
-<table style="width:100%">
+<table style="width:700px" align="center">
   <tr>
     <th>Voter's Email</th>
     <th>Email Sent</th> 
@@ -34,8 +35,12 @@
   	<% for(Entity voter : votersList){ %>
   	<tr>
     <td><%= voter.getProperty("email").toString().trim() %></td>
-    <td>Not sent <a href="/cast-vote?token=<%= voter.getProperty("token").toString() %>&id=<%= voter.getKey() %>">vote</a></td> 
-    <td><%= voter.getProperty("voted").toString() == "true" ? "Voted" : "Not voted" %></td>
+    <td>Not sent <a href="/cast-vote?token=<%= voter.getProperty("token").toString() %>">vote</a></td> 
+    <% if(voter.getProperty("voted").toString() == "false"){ %>
+    	<td>Not Voted</td>
+    <%} else { %>
+    	<td>Voted</td>
+    <% } %>
   </tr>
   <% } } %>
 </table>

@@ -8,9 +8,9 @@
 <title>Admin</title>
 </head>
 <body>
-<h1 align="center">Admin Management</h1>
-<bor><a href="/candidate" id="candidates">Manage Candidates</a></bor><br>
-<bor><a href="/voters" id="voters">Manage Voters</a></bor></a1>
-<bor><a href="/election-time" id="voters">Manage Election DateTime</a></bor>
+<h1 align="center">Admin Management</h1><br>
+<bor style="width: 600px; height: 90px; "><a href="/candidate" id="candidates">Manage Candidates</a></bor>
+<bor style="width: 600px; height: 90px; "><a href="/voters" id="voters">Manage Voters</a></bor>
+<bor style="width: 600px; height: 90px; "><a href="/election-time" id="voters">Manage Election DateTime</a></bor><br>
 </body>
 </html>

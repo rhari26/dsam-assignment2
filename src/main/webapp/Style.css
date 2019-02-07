@@ -1,21 +1,19 @@
 @charset "ISO-8859-1";
-bor {
-  width: 300px;
-  padding: 25px;
-  margin: 25px;
+bor{
+  width: 400px;
+	padding:5px;
+	margin:150px;
+  color:black;
   border: 5px solid #000080;
   text-align: center;
-  background-color: yellow;
-  margin-left: 150px;
-  padding-top: 1px;
-  padding-right: 2px;
-  padding-bottom: 1px;
-  padding-left: 2px;
+  background-color: #c0c0c0;
 }
-
+body{
+	background-color: #0080c0;
+	Color:white;
+}
 table {
 	border: 1px solid #000080;
-	width: 300%
 }
 th{
 	 background-color: #ff8000;
@@ -23,8 +21,12 @@ th{
 }
 
 tr{
-	 background-color: #c0c0c0;
+	 background-color: #b8c0c9;
 	 border: 2px dotted #000080;
+}
+a{
+	color:red;
+	
 }
 .button {
   width: 105px;
@@ -35,7 +37,6 @@ tr{
   vertical-align: middle;
   font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
   font-size: 13px;
-  <!--font-weight: bold;
-  -->text-transform: none;
+
   border: 1px solid transparent;
 }

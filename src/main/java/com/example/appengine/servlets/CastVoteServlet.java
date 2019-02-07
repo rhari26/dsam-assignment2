@@ -45,16 +45,20 @@ public class CastVoteServlet extends HttpServlet {
 		try {
 		
 		ElectionSummary es = new ElectionSummary();
-		if(token != null) {
-			
-			Entity voterData = es.getVoterData(token);
-			String voterKey = voterData.getProperty("token").toString();
-			
-			if(voterKey.equals(token) && voterData.getProperty("voted").toString() == "false") {
-				request.setAttribute("voterId", voterData.getKey().getId());
-				request.getRequestDispatcher("castVote.jsp").forward(request, response);
+			if(token != null) {
+				
+				Entity voterData = es.getVoterData(token);
+				String voterKey = voterData.getProperty("token").toString();
+				
+				if(voterKey.equals(token) && voterData.getProperty("voted").toString() == "false") {
+					request.setAttribute("voterId", voterData.getKey().getId());
+					request.getRequestDispatcher("castVote.jsp").forward(request, response);
+				}
+				else
+				{
+					request.getRequestDispatcher("404page.jsp").forward(request, response);
+				}
 			}
-		}
 		}
 		catch (Exception e) {
 			// TODO: handle exception
@@ -70,11 +74,14 @@ public class CastVoteServlet extends HttpServlet {
 		String voterId = request.getParameter("id");
 		Key voterKey = KeyFactory.createKey("Voters", Long.parseLong(voterId));
 		try {
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Entity voter = datastore.get(voterKey);
-		voter.setProperty("candidate", Long.parseLong(candidateId));
-		voter.setProperty("voted", "true");
-		datastore.put(voter);
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			Entity voter = datastore.get(voterKey);
+			if(voter.getProperty("voted").toString() == "false") {
+				voter.setProperty("candidate", Long.parseLong(candidateId));
+				voter.setProperty("voted", "true");
+				datastore.put(voter);
+			}
+			response.sendRedirect(request.getRequestURL().toString());
 		}
 		catch (Exception e) {
 			// TODO: handle exception

@@ -25,20 +25,16 @@ public class ElectionSummary {
 		
 	}
 	
-	public void sendEmailVoters(String toEmail) {
-		
-		String host = "localhost";
-		String from = "rhari26@gmail.com";
-		
+	public void sendEmailVoters(String toEmail, String token) {
 		Properties props = new Properties();
 		Session session = Session.getDefaultInstance(props, null);
 
 		try {
 		  Message msg = new MimeMessage(session);
 		  msg.setFrom(new InternetAddress("rhari26@gmail.com"));
-		  msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, "Mr. User"));
-		  msg.setSubject("Your Example.com account has been activated");
-		  msg.setText("This is a test");
+		  msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, ""));
+		  msg.setSubject("University Election - Voting Link");
+		  msg.setText("Hi, please cast your vote in the following link https://dsam-demo.appspot.com/cast-vote?token="+token);
 		  Transport.send(msg);
 		} catch (Exception e) {
 		  // ...
@@ -90,9 +86,9 @@ public class ElectionSummary {
 			if(voter.getProperty("voted").toString() == "true") {
 			  Message msg = new MimeMessage(session);
 			  msg.setFrom(new InternetAddress("rhari26@gmail.com"));
-			  msg.addRecipient(Message.RecipientType.TO, new InternetAddress(voter.getProperty("email").toString().trim(), "Mr. User"));
-			  msg.setSubject("Your Example.com account has been activated");
-			  msg.setText("This is a test");
+			  msg.addRecipient(Message.RecipientType.TO, new InternetAddress(voter.getProperty("email").toString().trim(), ""));
+			  msg.setSubject("Reminder: University Election - Voting Link");
+			  msg.setText("Hi, please cast your vote in the following link https://dsam-demo.appspot.com/cast-vote?token="+voter.getProperty("token").toString());
 			  Transport.send(msg);
 			}
 		}
@@ -100,6 +96,24 @@ public class ElectionSummary {
 		  // ...
 		}
 
+	}
+	
+	public int showCandidateVoteCount(long key) {
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query("Voters").setFilter(new FilterPredicate("candidate",FilterOperator.EQUAL, key));
+		List<Entity> votes = ds.prepare(q).asList(FetchOptions.Builder.withDefaults());
+		return votes.size();
+	}
+	
+	public String showVoteStatus(String status) {
+		String str = "";
+		if(status.equals("true")) {
+			str = "Voted";
+		}
+		else if(status.equals("false")) {
+			str = "Not Voted";
+		}
+		return str;
 	}
 
 }

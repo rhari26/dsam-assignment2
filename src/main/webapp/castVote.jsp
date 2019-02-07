@@ -7,12 +7,14 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="Style.css"/>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Cast Vote</title>
 </head>
 <body>
 <h2>Cast Vote</h2>
+
 <form action="/cast-vote?id=${voterId}" method="post" id="voter-form">
 	<% 
   ElectionSummary es = new ElectionSummary();
