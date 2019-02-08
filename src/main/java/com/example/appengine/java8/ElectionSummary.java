@@ -152,20 +152,23 @@ public class ElectionSummary {
 		boolean result = false;
 		Entity electionTime = getElectionTime();
 		String electionDateTime = electionTime.getProperty("electionDate")+" "+electionTime.getProperty("electionStartTime");
+		String electionEndDateTime = electionTime.getProperty("electionDate")+" "+electionTime.getProperty("electionEndTime");
 		SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd HH:mm");  
 		String timeStamp = new SimpleDateFormat("yy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
 		
 		Date electionDate = null;
+		Date electionEndDate = null;
 		Date currentTime = null;
 		
 		try {
 			electionDate = format.parse(electionDateTime);
 		    currentTime = format.parse(timeStamp);
+		    electionEndDate = format.parse(electionEndDateTime);
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 		}
-		if(electionDate.getDate() == currentTime.getDate() && electionDate.getTime() == currentTime.getTime()) {
+		if(electionDate.getDate() == currentTime.getDate() && electionDate.getTime() >= currentTime.getTime() && currentTime.getTime() <= electionEndDate.getTime()) {
 			result = true;
 		}
 		return result;
