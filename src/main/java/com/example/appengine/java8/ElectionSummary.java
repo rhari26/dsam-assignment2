@@ -60,7 +60,7 @@ public class ElectionSummary {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		Query electionQuery = new Query("Elections");
-		Entity election = datastore.prepare(electionQuery).asList(FetchOptions.Builder.withDefaults()).get(0);
+		Entity election = datastore.prepare(electionQuery).asSingleEntity();
 		
 		return election;
 	}
@@ -105,6 +105,13 @@ public class ElectionSummary {
 		return votes.size();
 	}
 	
+	public int showElectionTimeCount() {
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query("Elections");
+		List<Entity> election = ds.prepare(q).asList(FetchOptions.Builder.withDefaults());
+		return election.size();
+	}
+	
 	public String showVoteStatus(String status) {
 		String str = "";
 		if(status.equals("true")) {
@@ -114,6 +121,28 @@ public class ElectionSummary {
 			str = "Not Voted";
 		}
 		return str;
+	}
+	
+	public int showVotersCount() {
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query("Voters");
+		List<Entity> votes = ds.prepare(q).asList(FetchOptions.Builder.withDefaults());
+		return votes.size();
+	}
+	
+	public int showCastedVoteCount() {
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query("Voters").setFilter(new FilterPredicate("voted",FilterOperator.EQUAL, "true"));
+		List<Entity> votes = ds.prepare(q).asList(FetchOptions.Builder.withDefaults());
+		return votes.size();
+	}
+	
+	public float votingPercentage() {
+		float casted = showCastedVoteCount();
+		float total = showVotersCount();
+		float result = (casted/total)*100;
+		return result;
+
 	}
 
 }

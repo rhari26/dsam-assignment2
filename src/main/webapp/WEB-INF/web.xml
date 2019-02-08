@@ -53,4 +53,53 @@
     <servlet-name>CastVoteServlet</servlet-name>
     <url-pattern>/cast-vote</url-pattern>
   </servlet-mapping>
+  
+  <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>EmailServlet</web-resource-name>
+        <url-pattern>/email</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+</security-constraint>
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>ElectionTimeServlet</web-resource-name>
+        <url-pattern>/election-time</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+</security-constraint>
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>CandidateServlet</web-resource-name>
+        <url-pattern>/candidate</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+</security-constraint>
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>VotersServlet</web-resource-name>
+        <url-pattern>/voters</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+</security-constraint>
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>AdminServlet</web-resource-name>
+        <url-pattern>/admin</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+</security-constraint>
 </web-app>

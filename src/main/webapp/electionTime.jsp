@@ -14,11 +14,11 @@
 <h2>Manage Election Time/Date</h2>
 <bor>
 <% ElectionSummary es = new ElectionSummary();
-  List<Entity> electionTime = es.candidateList();
-  if(electionTime.isEmpty()){
+  Entity electionTime = es.getElectionTime();
+  if(es.showElectionTimeCount() == 0){
    %>
    <form action="/election-time" method="post" id="voter-form">
-	<div id="date-text">
+	<div id="">
 		<input type="date" name="date" id="date" placeholder="Election Date" required="required"><br>
 	</div>
 	<div id="startTime-text">
@@ -30,10 +30,9 @@
 	<input type="submit" value="Submit" name="submit">
 </form>
  <% } else { %>
- 	<% for(Entity election : electionTime){  %>
- 	<p>Election Date: <%= election.getProperty("electionDate") %></p>
- 	<p>Starting at: <%= election.getProperty("electionStartTime") %> till <%= election.getProperty("electionEndTime") %></p>
- <% } } %>
+ 	<p>Election Date: <%= electionTime.getProperty("electionDate") %></p>
+ 	<p>Starting at: <%= electionTime.getProperty("electionStartTime") %> till <%= electionTime.getProperty("electionEndTime") %></p>
+ <% } %>
  </bor>
 </body>
 </html>
