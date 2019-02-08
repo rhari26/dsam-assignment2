@@ -24,7 +24,6 @@
 <table style="width:700px" align="center">
   <tr>
     <th>Voter's Email</th>
-    <th>Email Sent</th> 
     <th>Voted</th>
   </tr>
   <% 
@@ -35,7 +34,6 @@
   	<% for(Entity voter : votersList){ %>
   	<tr>
     <td><%= voter.getProperty("email").toString().trim() %></td>
-    <td>Not sent <a href="/cast-vote?token=<%= voter.getProperty("token").toString() %>">vote</a></td> 
     <% if(voter.getProperty("voted").toString() == "false"){ %>
     	<td>Not Voted</td>
     <%} else { %>

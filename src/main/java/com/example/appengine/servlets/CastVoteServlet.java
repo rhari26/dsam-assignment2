@@ -50,7 +50,7 @@ public class CastVoteServlet extends HttpServlet {
 				Entity voterData = es.getVoterData(token);
 				String voterKey = voterData.getProperty("token").toString();
 				
-				if(voterKey.equals(token) && voterData.getProperty("voted").toString() == "false") {
+				if(voterKey.equals(token) && voterData.getProperty("voted").toString() == "false" && es.votingTime() == true) {
 					request.setAttribute("voterId", voterData.getKey().getId());
 					request.getRequestDispatcher("castVote.jsp").forward(request, response);
 				}
